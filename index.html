@@ -1,1045 +1,1164 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Untuk Kamu ♡</title>
+<meta charset="UTF-8">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<title>Untuk Kamu ♡</title>
 
-  <style>
-    :root {
-      --bg: #120b16;
-      --text: #f8f2f7;
-      --muted: #c9bdc8;
-      --accent: #e8a9c9;
-      --accent-light: #f5d4e5;
-      --glass: rgba(255,255,255,.075);
-      --border: rgba(255,255,255,.13);
-    }
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-    * {
-      box-sizing: border-box;
-    }
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-    html {
-      scroll-behavior: smooth;
-    }
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+rel="stylesheet">
 
-    body {
-      margin: 0;
-      min-height: 100%;
-      font-family: "DM Sans", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
 
-    /* BACKGROUND */
+<style>
 
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -3;
+/* =========================
+   BASIC
+========================= */
 
-      background:
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+
+    font-family: "DM Sans", sans-serif;
+
+    color: white;
+
+    background: #120b16;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background:
         linear-gradient(
-          180deg,
-          rgba(12,7,14,.25),
-          rgba(12,7,14,.82)
+            rgba(15,7,17,.35),
+            rgba(15,7,17,.75)
         ),
-        url("assets/bg.jpg") center/cover no-repeat;
+        url("assets/bg.jpg")
+        center / cover no-repeat;
 
-      transform: scale(1.03);
-      filter: saturate(.82);
-    }
+    transform: scale(1.05);
 
-    .overlay {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
+    transition:
+        transform 2s ease,
+        filter 2s ease;
+}
 
-      background:
+
+.overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+
         radial-gradient(
-          circle at 50% 35%,
-          transparent 0,
-          rgba(10,5,12,.25) 45%,
-          rgba(10,5,12,.78) 100%
+            circle at center,
+            transparent 0%,
+            rgba(0,0,0,.35) 55%,
+            rgba(0,0,0,.75) 100%
         );
-    }
+}
 
-    /* GRAIN */
 
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: .055;
+.grain {
 
-      background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-    }
+    position: fixed;
 
-    /* PROGRESS */
+    inset: 0;
 
-    .progress {
-      position: fixed;
-      top: 0;
-      left: 0;
+    z-index: -1;
 
-      width: 0%;
-      height: 2px;
+    opacity: .05;
 
-      background: var(--accent);
-      z-index: 100;
-    }
+    pointer-events: none;
 
-    /* SECTION */
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 
-    section {
-      min-height: 100vh;
+}
 
-      padding: 30px 22px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* =========================
+   SLIDES
+========================= */
 
-    .container {
-      width: min(900px, 100%);
-      text-align: center;
-    }
+.slider {
 
-    /* TEXT */
+    width: 100%;
 
-    .eyebrow {
-      font-size: .68rem;
-      letter-spacing: .28em;
-      text-transform: uppercase;
+    height: 100vh;
 
-      color: var(--accent-light);
-      opacity: .9;
-    }
+    position: relative;
 
-    h1,
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-      line-height: 1.08;
-    }
+}
 
-    h1 {
-      margin: 18px 0;
-      font-size: clamp(3rem, 10vw, 7rem);
-    }
 
-    h2 {
-      margin: 18px 0;
-      font-size: clamp(2.2rem, 6vw, 4.5rem);
-    }
+.slide {
 
-    p {
-      max-width: 680px;
-      margin: 0 auto;
+    position: absolute;
 
-      color: var(--muted);
+    inset: 0;
 
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      line-height: 1.8;
-    }
+    display: flex;
 
-    /* BUTTON */
+    align-items: center;
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+    justify-content: center;
 
-      gap: 12px;
-      margin-top: 30px;
-    }
+    text-align: center;
 
-    .btn {
-      border: 1px solid var(--border);
+    padding: 30px;
 
-      background: rgba(255,255,255,.08);
-      color: white;
+    opacity: 0;
 
-      padding: 13px 23px;
+    pointer-events: none;
 
-      border-radius: 999px;
+    transform: scale(1.04);
 
-      cursor: pointer;
+    transition:
 
-      font-family: inherit;
-      font-size: .95rem;
+        opacity .7s ease,
 
-      transition: .25s;
+        transform .7s ease;
 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
+}
 
-    .btn:hover {
-      transform: translateY(-3px);
 
-      background: rgba(255,255,255,.14);
-      border-color: rgba(255,255,255,.25);
-    }
+.slide.active {
 
-    .btn.primary {
-      background: var(--accent);
-      color: #21121b;
+    opacity: 1;
 
-      border-color: transparent;
+    pointer-events: auto;
 
-      font-weight: 600;
-    }
+    transform: scale(1);
 
-    .btn.primary:hover {
-      background: var(--accent-light);
-    }
+}
 
-    /* CARD */
 
-    .card {
-      max-width: 720px;
+/* =========================
+   CONTENT
+========================= */
 
-      margin: 30px auto 0;
+.content {
 
-      padding: 35px;
+    width: min(720px, 100%);
 
-      text-align: left;
+}
 
-      border: 1px solid var(--border);
-      border-radius: 28px;
 
-      background: var(--glass);
+.number {
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+    font-size: .7rem;
 
-      box-shadow:
-        0 24px 80px rgba(0,0,0,.24);
-    }
+    letter-spacing: .3em;
 
-    .quote {
-      font-family: "Playfair Display", serif;
+    text-transform: uppercase;
 
-      font-size: clamp(1.35rem, 4vw, 2rem);
+    color: #efc8dc;
 
-      line-height: 1.55;
+    margin-bottom: 25px;
 
-      font-style: italic;
-    }
+}
 
-    .signature {
-      margin-top: 25px;
 
-      color: var(--accent-light);
+h1,
+h2 {
 
-      font-size: .9rem;
-    }
+    font-family: "Playfair Display", serif;
 
-    /* CHOICES */
+    font-weight: 500;
 
-    .choices {
-      max-width: 650px;
+}
 
-      margin: 30px auto 0;
 
-      display: grid;
+h1 {
 
-      grid-template-columns: repeat(3, 1fr);
+    font-size:
+        clamp(3.5rem, 11vw, 7rem);
 
-      gap: 12px;
-    }
+    margin: 0 0 25px;
 
-    .choices .btn {
-      min-height: 62px;
-    }
+    line-height: 1;
 
-    .hidden {
-      display: none;
-    }
+}
 
-    /* MUSIC */
 
-    .music-button {
-      position: fixed;
+h2 {
 
-      right: 17px;
-      bottom: 17px;
+    font-size:
+        clamp(2.5rem, 7vw, 5rem);
 
-      width: 47px;
-      height: 47px;
+    margin: 0 0 30px;
 
-      border-radius: 50%;
+    line-height: 1.1;
 
-      border: 1px solid var(--border);
+}
 
-      background: rgba(20,10,22,.65);
 
-      color: white;
+.text {
 
-      cursor: pointer;
+    font-size:
+        clamp(1rem, 2.8vw, 1.15rem);
 
-      font-size: 18px;
+    line-height: 1.9;
 
-      z-index: 50;
+    color: #d7ccd5;
 
-      backdrop-filter: blur(12px);
-    }
+}
 
-    /* SCROLL */
 
-    .scroll {
-      margin-top: 70px;
+.highlight {
 
-      font-size: .7rem;
+    color: #f3b9d4;
 
-      letter-spacing: .18em;
+}
 
-      color: var(--muted);
 
-      opacity: .7;
-    }
+/* =========================
+   BUTTON
+========================= */
 
-    /* ANIMATION */
+.next {
 
-    .fade {
-      animation: fade .8s ease both;
-    }
+    margin-top: 40px;
 
-    @keyframes fade {
+    padding: 14px 30px;
 
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
+    border-radius: 999px;
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    border: 1px solid
+        rgba(255,255,255,.2);
 
-    }
+    background:
+        rgba(255,255,255,.09);
 
-    /* FLOATING HEART */
+    color: white;
 
-    .heart {
-      position: fixed;
+    font-family: inherit;
 
-      pointer-events: none;
+    font-size: .9rem;
 
-      z-index: 20;
+    cursor: pointer;
 
-      font-size: 15px;
+    backdrop-filter: blur(12px);
 
-      opacity: 0;
+    transition: .25s;
 
-      animation:
-        float 4s ease-out forwards;
-    }
+}
 
-    @keyframes float {
 
-      0% {
+.next:hover {
+
+    background: #e8a9c9;
+
+    color: #20121b;
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+.music {
+
+    position: fixed;
+
+    right: 20px;
+
+    top: 20px;
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(20,10,22,.55);
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+/* =========================
+   DOTS
+========================= */
+
+.dots {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 8px;
+
+    z-index: 20;
+
+}
+
+
+.dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.35);
+
+    transition: .3s;
+
+}
+
+
+.dot.active {
+
+    width: 22px;
+
+    border-radius: 10px;
+
+    background: #e8a9c9;
+
+}
+
+
+/* =========================
+   HEART
+========================= */
+
+.heart {
+
+    position: fixed;
+
+    pointer-events: none;
+
+    font-size: 15px;
+
+    z-index: 30;
+
+    animation:
+        heartFloat 3.5s ease-out forwards;
+
+}
+
+
+@keyframes heartFloat {
+
+    0% {
+
         transform:
-          translateY(0)
-          scale(.6);
+            translateY(0)
+            scale(.5);
 
         opacity: 0;
-      }
 
-      15% {
+    }
+
+    15% {
+
         opacity: .8;
-      }
 
-      100% {
+    }
+
+    100% {
+
         transform:
-          translateY(-140px)
-          translateX(var(--x))
-          scale(1.2);
+            translateY(-160px)
+            translateX(var(--x))
+            scale(1.2);
 
         opacity: 0;
-      }
 
     }
 
-    footer {
-      position: fixed;
+}
 
-      bottom: 14px;
-      left: 18px;
 
-      font-size: .65rem;
+/* =========================
+   FINAL
+========================= */
 
-      color: white;
+.final-heart {
 
-      opacity: .3;
+    font-size: 55px;
+
+    margin-top: 25px;
+
+    animation:
+        pulse 1.8s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
     }
 
-    /* MOBILE */
+    50% {
 
-    @media(max-width:600px) {
+        transform: scale(1.12);
 
-      section {
-        padding: 24px 17px;
-      }
+    }
 
-      .card {
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px) {
+
+    .slide {
+
         padding: 25px;
-        border-radius: 22px;
-      }
-
-      .choices {
-        grid-template-columns: 1fr;
-      }
-
-      .scroll {
-        margin-top: 45px;
-      }
 
     }
-  </style>
+
+    .text {
+
+        line-height: 1.75;
+
+    }
+
+    .next {
+
+        margin-top: 30px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-  <!-- BACKGROUND -->
 
-  <div class="background"></div>
-  <div class="overlay"></div>
-  <div class="grain"></div>
+<!-- BACKGROUND -->
 
-  <!-- PROGRESS -->
+<div class="background"></div>
 
-  <div
-    class="progress"
-    id="progress">
-  </div>
+<div class="overlay"></div>
 
-  <!-- MUSIC -->
+<div class="grain"></div>
 
-  <audio
-    id="music"
-    loop
-    preload="auto">
 
-    <source
-      src="assets/music.mp3"
-      type="audio/mpeg">
+<!-- MUSIC -->
 
-  </audio>
+<audio
+id="music"
+loop>
 
-  <button
-    class="music-button"
-    id="musicButton"
-    onclick="toggleMusic()">
+<source
+src="assets/music.mp3"
+type="audio/mpeg">
 
-    ♫
+</audio>
 
-  </button>
 
+<button
+class="music"
+onclick="toggleMusic()"
+id="musicButton">
 
-  <!-- WEBSITE -->
+♫
 
-  <main>
+</button>
 
-    <!-- HERO -->
 
-    <section>
+<!-- =========================
+     SLIDER
+========================= -->
 
-      <div class="container fade">
+<div class="slider">
 
-        <div class="eyebrow">
-          a little something for you
-        </div>
 
-        <h1>
-          Untuk kamu.
-        </h1>
+<!-- SLIDE 1 -->
 
-        <p>
-          Ada beberapa hal yang lebih mudah
-          disampaikan lewat halaman kecil seperti ini
-          daripada chat panjang yang akhirnya cuma
-          dibaca sambil senyum sendiri.
-        </p>
+<section
+class="slide active">
 
-        <div class="buttons">
+<div class="content">
 
-          <button
-            class="btn primary"
-            onclick="startExperience()">
+<div class="number">
+01 · Untuk kamu
+</div>
 
-            Buka pelan-pelan
+<h1>
+Hai.
+</h1>
 
-          </button>
+<div class="text">
 
-          <button
-            class="btn"
-            onclick="toggleMusic()">
+Aku sebenarnya bingung
+harus mulai dari mana.
 
-            Putar musik ♫
+<br><br>
 
-          </button>
+Jadi...
 
-        </div>
+aku buatkan sesuatu
+buat kamu.
 
-        <div class="scroll">
-          SCROLL PELAN · ↓
-        </div>
+</div>
 
-      </div>
+<button
+class="next"
+onclick="nextSlide()">
 
-    </section>
+Lanjut →
 
+</button>
 
-    <!-- SECTION 01 -->
+</div>
 
-    <section>
+</section>
 
-      <div class="container">
 
-        <div class="eyebrow">
-          01 · alasan sederhana
-        </div>
+<!-- SLIDE 2 -->
 
-        <h2>
-          Bukan karena kamu sempurna.
-        </h2>
+<section
+class="slide">
 
-        <div class="card">
+<div class="content">
 
-          <div
-            class="quote"
-            id="typeText">
-          </div>
+<div class="number">
+02 · Sedikit jujur
+</div>
 
-          <div class="signature">
-            — dari seseorang yang memilih tetap peduli
-          </div>
+<h2>
+Ada sesuatu.
+</h2>
 
-        </div>
+<div class="text">
 
-      </div>
+Semakin lama aku mengenal kamu,
 
-    </section>
+semakin banyak hal kecil
+tentang kamu yang aku suka.
 
+<br><br>
 
-    <!-- SECTION 02 -->
+Bukan karena kamu sempurna.
 
-    <section>
+Tapi karena kamu adalah
+<span class="highlight">
+kamu.
+</span>
 
-      <div class="container">
+</div>
 
-        <div class="eyebrow">
-          02 · kalau kamu bertanya
-        </div>
+<button
+class="next"
+onclick="nextSlide()">
 
-        <h2>
-          “Kenapa aku?”
-        </h2>
+Lanjut →
 
-        <p>
-          Karena entah bagaimana, di antara begitu
-          banyak orang, kamu berhasil menjadi seseorang
-          yang ingin aku jaga.
+</button>
 
-          <br><br>
+</div>
 
-          Bukan untuk memiliki.
-          Bukan untuk memaksa.
+</section>
 
-          Cukup untuk memastikan kamu tahu bahwa
-          ada seseorang yang benar-benar peduli.
-        </p>
 
-      </div>
+<!-- SLIDE 3 -->
 
-    </section>
+<section
+class="slide">
 
+<div class="content">
 
-    <!-- SECTION 03 -->
+<div class="number">
+03 · Hal kecil
+</div>
 
-    <section>
+<h2>
+Mungkin kamu tidak sadar.
+</h2>
 
-      <div class="container">
+<div class="text">
 
-        <div class="eyebrow">
-          03 · satu pilihan kecil
-        </div>
+Cara kamu bicara.
 
-        <h2>
-          Mau dipanggil apa?
-        </h2>
+<br>
 
-        <p>
-          Pilih satu.
+Cara kamu tertawa.
 
-          Tidak ada jawaban salah.
+<br>
 
-          Hanya ada sedikit konsekuensi digital.
-        </p>
+Cara kamu diam.
 
-        <div class="choices">
+<br>
 
-          <button
-            class="btn"
-            onclick="choose('sayang')">
+Bahkan hal-hal kecil yang
+mungkin menurutmu biasa saja.
 
-            Sayang
+<br><br>
 
-          </button>
+Entah kenapa,
+semuanya berhasil membuatku
+ingin terus berada di dekatmu.
 
-          <button
-            class="btn"
-            onclick="choose('cantik')">
+</div>
 
-            Cantik
+<button
+class="next"
+onclick="nextSlide()">
 
-          </button>
+Lanjut →
 
-          <button
-            class="btn"
-            id="ummiButton"
-            onclick="choose('ummi')">
+</button>
 
-            Ummi
+</div>
 
-          </button>
+</section>
 
-        </div>
 
+<!-- SLIDE 4 -->
 
-        <div
-          id="choiceResult"
-          class="card hidden"
-          style="text-align:center">
+<section
+class="slide">
 
-        </div>
+<div class="content">
 
-      </div>
+<div class="number">
+04 · Yang sebenarnya
+</div>
 
-    </section>
+<h2>
+Aku sayang kamu.
+</h2>
 
+<div class="text">
 
-    <!-- SECTION 04 -->
+Tidak ada kalimat rumit
+yang perlu aku sembunyikan.
 
-    <section>
+<br><br>
 
-      <div class="container">
+Aku sayang kamu.
 
-        <div class="eyebrow">
-          04 · yang sebenarnya ingin aku bilang
-        </div>
+<br><br>
 
-        <h2>
-          Aku sayang kamu.
-        </h2>
+Sesederhana itu.
 
-        <p>
-          Sesederhana itu.
+Tapi perasaan di baliknya
+tidak sesederhana kalimatnya.
 
-          <br><br>
+</div>
 
-          Tidak perlu kalimat yang terlalu besar
-          untuk sesuatu yang terasa nyata.
+<button
+class="next"
+onclick="nextSlide()">
 
-          <br><br>
+Lanjut →
 
-          Aku tidak tahu ke mana cerita ini akan berjalan,
-          tapi untuk sekarang, aku ingin kamu tahu satu hal:
+</button>
 
-          <br><br>
+</div>
 
-          <strong>
-            perasaanku tulus.
-          </strong>
-        </p>
+</section>
 
-        <div class="buttons">
 
-          <button
-            class="btn primary"
-            onclick="finale()">
+<!-- SLIDE 5 -->
 
-            Simpan momen ini ♡
+<section
+class="slide">
 
-          </button>
+<div class="content">
 
-        </div>
+<div class="number">
+05 · Bukan tentang memiliki
+</div>
 
-      </div>
+<h2>
+Aku tidak ingin memaksa.
+</h2>
 
-    </section>
+<div class="text">
 
+Aku tidak membuat ini
+supaya kamu merasa harus
+membalas perasaanku.
 
-    <!-- FINAL -->
+<br><br>
 
-    <section>
+Aku cuma ingin kamu tahu...
 
-      <div class="container">
+ada seseorang yang benar-benar
+peduli sama kamu.
 
-        <div class="eyebrow">
-          05 · terakhir
-        </div>
+<br><br>
 
-        <h2 id="finalTitle">
-          Terima kasih sudah ada.
-        </h2>
+Dan orang itu adalah aku.
 
-        <p id="finalText">
+</div>
 
-          Kalau suatu hari kamu lupa,
-          buka halaman ini lagi.
+<button
+class="next"
+onclick="nextSlide()">
 
-          <br><br>
+Lanjut →
 
-          Bukan untuk mengingat siapa yang menyukaimu,
-          tapi untuk mengingat bahwa kamu pernah
-          begitu berarti bagi seseorang.
+</button>
 
-        </p>
+</div>
 
-        <div
-          class="signature"
-          style="margin-top:35px">
+</section>
 
-          ♡
 
-        </div>
+<!-- SLIDE 6 -->
 
-      </div>
+<section
+class="slide">
 
-    </section>
+<div class="content">
 
-  </main>
+<div class="number">
+06 · Terakhir
+</div>
 
+<h2>
+Terima kasih.
+</h2>
 
-  <footer>
-    made with intention, not excessive glitter
-  </footer>
+<div class="text">
 
+Terima kasih sudah hadir
+dan menjadi bagian dari
+hal-hal kecil yang membuat
+hari-hariku terasa berbeda.
 
-  <script>
+<br><br>
 
-    const music =
-      document.getElementById("music");
+Apapun yang terjadi nanti,
 
-    const musicButton =
-      document.getElementById("musicButton");
+aku akan tetap bersyukur
+pernah mengenal kamu.
 
-    const typeText =
-      document.getElementById("typeText");
+</div>
 
-    const progress =
-      document.getElementById("progress");
+<div class="final-heart">
+♡
+</div>
 
+<button
+class="next"
+onclick="restart()">
 
-    /* MUSIC */
+Ulangi dari awal ↻
 
-    function toggleMusic() {
+</button>
 
-      if (music.paused) {
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- DOTS -->
+
+<div
+class="dots"
+id="dots">
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   SLIDER SYSTEM
+========================= */
+
+const slides =
+    document.querySelectorAll(".slide");
+
+const dotsContainer =
+    document.getElementById("dots");
+
+let currentSlide = 0;
+
+
+/* CREATE DOTS */
+
+slides.forEach((slide, index) => {
+
+    const dot =
+        document.createElement("div");
+
+    dot.className = "dot";
+
+    if(index === 0) {
+
+        dot.classList.add("active");
+
+    }
+
+    dot.onclick = () => {
+
+        goToSlide(index);
+
+    };
+
+    dotsContainer.appendChild(dot);
+
+});
+
+
+const dots =
+    document.querySelectorAll(".dot");
+
+
+/* CHANGE SLIDE */
+
+function goToSlide(index) {
+
+    slides[currentSlide]
+        .classList.remove("active");
+
+    dots[currentSlide]
+        .classList.remove("active");
+
+
+    currentSlide = index;
+
+
+    slides[currentSlide]
+        .classList.add("active");
+
+    dots[currentSlide]
+        .classList.add("active");
+
+
+    document
+        .querySelector(".background")
+        .style.transform =
+        "scale(1.08)";
+
+
+    setTimeout(() => {
+
+        document
+            .querySelector(".background")
+            .style.transform =
+            "scale(1.05)";
+
+    }, 700);
+
+
+    createHearts(
+        currentSlide === slides.length - 1
+            ? 15
+            : 3
+    );
+
+}
+
+
+/* NEXT */
+
+function nextSlide() {
+
+    if(
+        currentSlide <
+        slides.length - 1
+    ) {
+
+        goToSlide(
+            currentSlide + 1
+        );
+
+    }
+
+}
+
+
+/* RESTART */
+
+function restart() {
+
+    goToSlide(0);
+
+}
+
+
+/* =========================
+   MUSIC
+========================= */
+
+const music =
+    document.getElementById("music");
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+
+function toggleMusic() {
+
+    if(music.paused) {
 
         music.play()
-          .then(() => {
+        .then(() => {
 
-            musicButton.textContent = "❚❚";
+            musicButton.textContent =
+                "❚❚";
 
-          })
-          .catch(() => {
+        })
+        .catch(() => {
 
             alert(
-              "Browser memblokir autoplay. Tekan tombol musik sekali lagi."
+                "Tekan tombol musik sekali lagi."
             );
 
-          });
+        });
 
-      } else {
+    }
+
+    else {
 
         music.pause();
 
-        musicButton.textContent = "♫";
-
-      }
-
-    }
-
-
-    /* START */
-
-    function startExperience() {
-
-      if (music.paused) {
-
-        music.play()
-          .then(() => {
-
-            musicButton.textContent = "❚❚";
-
-          })
-          .catch(() => {});
-
-      }
-
-      document
-        .querySelectorAll("section")[1]
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-      createHearts(8);
+        musicButton.textContent =
+            "♫";
 
     }
 
+}
 
-    /* TYPEWRITER */
 
-    const message =
+/* =========================
+   HEART EFFECT
+========================= */
 
-      "Aku suka caramu menjadi dirimu sendiri. " +
-      "Cara kamu bicara, tertawa, diam, bahkan " +
-      "hal-hal kecil yang mungkin tidak kamu sadari. " +
-      "Perasaanku tumbuh bukan karena satu momen besar, " +
-      "tapi dari banyak hal kecil yang terus membuatku " +
-      "ingin tetap berada di dekatmu.";
+function createHearts(amount) {
 
-
-    let typed = false;
-
-
-    function typeWriter() {
-
-      if (typed) return;
-
-      typed = true;
-
-      let index = 0;
-
-      const interval = setInterval(() => {
-
-        typeText.textContent =
-          message.slice(0, index);
-
-        index++;
-
-        if (index > message.length) {
-
-          clearInterval(interval);
-
-        }
-
-      }, 22);
-
-    }
-
-
-    /* DETECT SECTION */
-
-    const observer =
-      new IntersectionObserver(
-
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              typeWriter();
-
-            }
-
-          });
-
-        },
-
-        {
-          threshold: .35
-        }
-
-      );
-
-
-    observer.observe(typeText);
-
-
-    /* CHOICE */
-
-    function choose(word) {
-
-      const box =
-        document.getElementById(
-          "choiceResult"
-        );
-
-      box.classList.remove("hidden");
-
-      const messages = {
-
-        sayang:
-          "Baik. Tapi hati-hati, panggilan itu punya efek samping: bikin senyum tanpa alasan.",
-
-        cantik:
-          "Dicatat. Walaupun sebenarnya kata itu tidak cukup untuk menjelaskan kamu.",
-
-        ummi:
-          "Pilihan yang sangat spesifik. Tombolnya pun tadi sudah berusaha kabur. 😭"
-
-      };
-
-
-      box.innerHTML =
-
-        '<div class="quote">' +
-        messages[word] +
-        '</div>';
-
-
-      if (word === "ummi") {
-
-        const button =
-          document.getElementById(
-            "ummiButton"
-          );
-
-        button.style.transform =
-          "scale(.72) rotate(-4deg)";
-
-        setTimeout(() => {
-
-          button.style.transform = "";
-
-        }, 700);
-
-      }
-
-
-      createHearts(8);
-
-    }
-
-
-    /* FINAL */
-
-    function finale() {
-
-      createHearts(22);
-
-      document
-        .getElementById("finalTitle")
-        .textContent =
-        "Kalau ini terasa sederhana...";
-
-
-      document
-        .getElementById("finalText")
-        .innerHTML =
-
-        "Memang.<br><br>" +
-
-        "Karena rasa sayang tidak selalu membutuhkan " +
-        "pertunjukan besar.<br><br>" +
-
-        "Kadang cukup satu halaman, satu lagu, " +
-        "dan keberanian untuk berkata jujur.";
-
-
-      document
-        .querySelectorAll("section")[5]
-        .scrollIntoView({
-          behavior: "smooth"
-        });
-
-    }
-
-
-    /* HEART EFFECT */
-
-    function createHearts(amount = 5) {
-
-      for (
+    for(
         let i = 0;
         i < amount;
         i++
-      ) {
+    ) {
 
         const heart =
-          document.createElement("span");
+            document.createElement(
+                "div"
+            );
 
-        heart.className = "heart";
+
+        heart.className =
+            "heart";
+
 
         heart.textContent =
-          Math.random() > .35
-            ? "♡"
-            : "✦";
+            Math.random() > .3
+                ? "♡"
+                : "✦";
 
 
         heart.style.left =
-          (35 + Math.random() * 30) +
-          "vw";
+            (
+                35 +
+                Math.random() * 30
+            ) + "vw";
 
 
         heart.style.bottom =
-          (18 + Math.random() * 12) +
-          "vh";
+            (
+                25 +
+                Math.random() * 15
+            ) + "vh";
 
 
         heart.style.setProperty(
-          "--x",
-          (Math.random() * 160 - 80) +
-          "px"
+            "--x",
+            (
+                Math.random() * 160 -
+                80
+            ) + "px"
         );
 
 
         document.body.appendChild(
-          heart
+            heart
         );
 
 
         setTimeout(() => {
 
-          heart.remove();
+            heart.remove();
 
-        }, 4200);
-
-      }
+        }, 3500);
 
     }
 
-
-    /* SCROLL PROGRESS */
-
-    window.addEventListener(
-      "scroll",
-      () => {
-
-        const max =
-          document.documentElement
-            .scrollHeight -
-          window.innerHeight;
+}
 
 
-        const percentage =
-          (window.scrollY / max) * 100;
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key ===
+            "ArrowRight"
+        ) {
+
+            nextSlide();
+
+        }
 
 
-        progress.style.width =
-          percentage + "%";
+        if(
+            event.key ===
+            "ArrowLeft"
+        ) {
 
-      }
-    );
+            if(currentSlide > 0) {
 
-  </script>
+                goToSlide(
+                    currentSlide - 1
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================
+   SWIPE MOBILE
+========================= */
+
+let touchStartX = 0;
+
+
+document.addEventListener(
+    "touchstart",
+    event => {
+
+        touchStartX =
+            event.changedTouches[0].screenX;
+
+    }
+);
+
+
+document.addEventListener(
+    "touchend",
+    event => {
+
+        const touchEndX =
+            event.changedTouches[0].screenX;
+
+
+        const difference =
+            touchStartX -
+            touchEndX;
+
+
+        if(
+            Math.abs(difference) >
+            60
+        ) {
+
+            if(difference > 0) {
+
+                nextSlide();
+
+            }
+
+            else if(currentSlide > 0) {
+
+                goToSlide(
+                    currentSlide - 1
+                );
+
+            }
+
+        }
+
+    }
+);
+
+</script>
 
 </body>
+
 </html>
