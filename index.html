@@ -1,1153 +1,381 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Untuk Kamu ♡</title>
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
-rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
 
 <style>
-
-/* =========================
-   BASIC
-========================= */
-
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html,
 body {
-    margin: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #18233b 0%, #090d18 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Bintang */
+.stars {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
 }
 
-body {
-
-    font-family: "DM Sans", sans-serif;
-
-    color: white;
-
-    background: #120b16;
-}
-
-
-/* =========================
-   BACKGROUND
-========================= */
-
-.background {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: -3;
-
-    background:
-        linear-gradient(
-            rgba(15,7,17,.35),
-            rgba(15,7,17,.75)
-        ),
-        url("assets/bg.jpg")
-        center / cover no-repeat;
-
-    transform: scale(1.05);
-
-    transition:
-        transform 2s ease,
-        filter 2s ease;
-}
-
-
-.overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: -2;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            transparent 0%,
-            rgba(0,0,0,.35) 55%,
-            rgba(0,0,0,.75) 100%
-        );
-}
-
-
-.grain {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: -1;
-
-    opacity: .05;
-
-    pointer-events: none;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-
-}
-
-
-/* =========================
-   SLIDES
-========================= */
-
-.slider {
-
-    width: 100%;
-
-    height: 100vh;
-
-    position: relative;
-
-}
-
-
-.slide {
-
+.star {
     position: absolute;
-
-    inset: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 30px;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform: scale(1.04);
-
-    transition:
-
-        opacity .7s ease,
-
-        transform .7s ease;
-
-}
-
-
-.slide.active {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform: scale(1);
-
-}
-
-
-/* =========================
-   CONTENT
-========================= */
-
-.content {
-
-    width: min(720px, 100%);
-
-}
-
-
-.number {
-
-    font-size: .7rem;
-
-    letter-spacing: .3em;
-
-    text-transform: uppercase;
-
-    color: #efc8dc;
-
-    margin-bottom: 25px;
-
-}
-
-
-h1,
-h2 {
-
-    font-family: "Playfair Display", serif;
-
-    font-weight: 500;
-
-}
-
-
-h1 {
-
-    font-size:
-        clamp(3.5rem, 11vw, 7rem);
-
-    margin: 0 0 25px;
-
-    line-height: 1;
-
-}
-
-
-h2 {
-
-    font-size:
-        clamp(2.5rem, 7vw, 5rem);
-
-    margin: 0 0 30px;
-
-    line-height: 1.1;
-
-}
-
-
-.text {
-
-    font-size:
-        clamp(1rem, 2.8vw, 1.15rem);
-
-    line-height: 1.9;
-
-    color: #d7ccd5;
-
-}
-
-
-.highlight {
-
-    color: #f3b9d4;
-
-}
-
-
-/* =========================
-   BUTTON
-========================= */
-
-.next {
-
-    margin-top: 40px;
-
-    padding: 14px 30px;
-
-    border-radius: 999px;
-
-    border: 1px solid
-        rgba(255,255,255,.2);
-
-    background:
-        rgba(255,255,255,.09);
-
-    color: white;
-
-    font-family: inherit;
-
-    font-size: .9rem;
-
-    cursor: pointer;
-
-    backdrop-filter: blur(12px);
-
-    transition: .25s;
-
-}
-
-
-.next:hover {
-
-    background: #e8a9c9;
-
-    color: #20121b;
-
-    transform:
-        translateY(-3px);
-
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-.music {
-
-    position: fixed;
-
-    right: 20px;
-
-    top: 20px;
-
-    width: 45px;
-
-    height: 45px;
-
+    width: 2px;
+    height: 2px;
+    background: white;
     border-radius: 50%;
-
-    border: 1px solid
-        rgba(255,255,255,.2);
-
-    background:
-        rgba(20,10,22,.55);
-
-    color: white;
-
-    cursor: pointer;
-
-    z-index: 50;
-
-    backdrop-filter: blur(10px);
-
+    opacity: 0.7;
+    animation: twinkle 2s infinite alternate;
 }
 
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
 
-/* =========================
-   DOTS
-========================= */
+/* Area bunga */
+.scene {
+    position: relative;
+    width: 350px;
+    height: 500px;
+}
 
-.dots {
-
-    position: fixed;
-
-    bottom: 25px;
-
+/* Tanah */
+.ground {
+    position: absolute;
+    bottom: 55px;
     left: 50%;
-
     transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 8px;
-
-    z-index: 20;
-
-}
-
-
-.dot {
-
-    width: 6px;
-
-    height: 6px;
-
+    width: 150px;
+    height: 12px;
+    background: #182818;
     border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.35);
-
-    transition: .3s;
-
+    filter: blur(2px);
 }
 
-
-.dot.active {
-
-    width: 22px;
-
+/* Batang */
+.stem {
+    position: absolute;
+    width: 7px;
+    height: 0;
+    background: linear-gradient(to right, #245b32, #4e9b52, #245b32);
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
     border-radius: 10px;
-
-    background: #e8a9c9;
-
+    animation: growStem 4s ease-out forwards;
 }
 
-
-/* =========================
-   HEART
-========================= */
-
-.heart {
-
-    position: fixed;
-
-    pointer-events: none;
-
-    font-size: 15px;
-
-    z-index: 30;
-
-    animation:
-        heartFloat 3.5s ease-out forwards;
-
-}
-
-
-@keyframes heartFloat {
-
+@keyframes growStem {
     0% {
-
-        transform:
-            translateY(0)
-            scale(.5);
-
-        opacity: 0;
-
+        height: 0;
     }
 
-    15% {
+    100% {
+        height: 250px;
+    }
+}
 
+/* Daun */
+.leaf {
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: #3f8d47;
+    border-radius: 100% 0 100% 0;
+    opacity: 0;
+}
+
+.leaf.left {
+    left: 50%;
+    bottom: 150px;
+    transform-origin: right bottom;
+    animation: leafLeft 2s ease-out 2s forwards;
+}
+
+.leaf.right {
+    left: 50%;
+    bottom: 190px;
+    transform-origin: left bottom;
+    border-radius: 0 100% 0 100%;
+    animation: leafRight 2s ease-out 2.5s forwards;
+}
+
+@keyframes leafLeft {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        width: 65px;
+        height: 30px;
+        opacity: 1;
+        transform: translateX(-60px) rotate(-25deg);
+    }
+}
+
+@keyframes leafRight {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        width: 65px;
+        height: 30px;
+        opacity: 1;
+        transform: translateX(0) rotate(25deg);
+    }
+}
+
+/* Kepala bunga */
+.flower {
+    position: absolute;
+    left: 50%;
+    bottom: 300px;
+    width: 20px;
+    height: 20px;
+    transform: translateX(-50%);
+}
+
+/* Kelopak */
+.petal {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    background: linear-gradient(135deg, #ff719d, #d92869);
+    border-radius: 100% 0 100% 0;
+    transform-origin: bottom right;
+    opacity: 0;
+    box-shadow: 0 0 15px rgba(255, 70, 130, 0.4);
+}
+
+/* 8 kelopak */
+.petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
+.petal:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); }
+.petal:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); }
+.petal:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); }
+.petal:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); }
+.petal:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); }
+.petal:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); }
+.petal:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); }
+
+.flower.bloom .petal {
+    animation: bloom 3s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes bloom {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 95px;
+        height: 135px;
+        opacity: 1;
+    }
+}
+
+/* Putik */
+.center {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffe88a, #f5a623);
+    box-shadow: 0 0 0 rgba(255, 210, 70, 0);
+    z-index: 10;
+    animation: centerGrow 3s ease-out 3s forwards;
+}
+
+@keyframes centerGrow {
+    0% {
+        width: 0;
+        height: 0;
+    }
+
+    100% {
+        width: 45px;
+        height: 45px;
+        box-shadow: 0 0 25px rgba(255, 200, 70, .7);
+    }
+}
+
+/* Tulisan */
+.message {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 5px;
+    color: white;
+    font-size: 0;
+    letter-spacing: 5px;
+    opacity: 0;
+    text-shadow: 0 0 15px rgba(255, 100, 160, .8);
+    animation: showText 2s ease-out 6s forwards;
+}
+
+@keyframes showText {
+    0% {
+        opacity: 0;
+        font-size: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        font-size: 36px;
+        transform: translateY(0);
+    }
+}
+
+/* Partikel cinta */
+.heart {
+    position: absolute;
+    color: #ff6f9f;
+    font-size: 15px;
+    opacity: 0;
+    animation: floatHeart 5s linear infinite;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(.5);
+        opacity: 0;
+    }
+
+    20% {
         opacity: .8;
-
     }
 
     100% {
-
-        transform:
-            translateY(-160px)
-            translateX(var(--x))
-            scale(1.2);
-
+        transform: translateY(-180px) scale(1.2);
         opacity: 0;
-
     }
-
 }
-
-
-/* =========================
-   FINAL
-========================= */
-
-.final-heart {
-
-    font-size: 55px;
-
-    margin-top: 25px;
-
-    animation:
-        pulse 1.8s infinite;
-
-}
-
-
-@keyframes pulse {
-
-    0%,
-    100% {
-
-        transform: scale(1);
-
-    }
-
-    50% {
-
-        transform: scale(1.12);
-
-    }
-
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px) {
-
-    .slide {
-
-        padding: 25px;
-
-    }
-
-    .text {
-
-        line-height: 1.75;
-
-    }
-
-    .next {
-
-        margin-top: 30px;
-
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<div class="stars" id="stars"></div>
 
-<!-- BACKGROUND -->
+<div class="scene">
 
-<div class="background"></div>
+    <div class="ground"></div>
 
-<div class="overlay"></div>
+    <div class="stem"></div>
 
-<div class="grain"></div>
+    <div class="leaf left"></div>
+    <div class="leaf right"></div>
 
+    <div class="flower" id="flower">
 
-<!-- MUSIC -->
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
 
-<audio
-id="music"
-loop
-preload="auto">   
+        <div class="center"></div>
 
-<source
-src="assets/music.mp3"
-type="audio/mpeg">
+    </div>
 
-</audio>
-
-
-<button
-class="music"
-onclick="toggleMusic()"
-id="musicButton">
-
-♫
-
-</button>
-
-
-<!-- =========================
-     SLIDER
-========================= -->
-
-<div class="slider">
-
-
-<!-- SLIDE 1 -->
-
-<section
-class="slide active">
-
-<div class="content">
-
-<div class="number">
-Untukmu Cantikku
-</div>
-
-<h1>
-Hai, umm
-</h1>
-
-<div class="text">
-
-Aku sebenarnya
-hanya ingin ngeyakinin.
-
-<br><br>
-
-Jadi...
-
-aku buatkan sesuatu
-buat kamu.
+    <div class="message">
+        I Love You ❤️
+    </div>
 
 </div>
-
-<button
-class="next"
-onclick="nextSlide()">
-
-Lanjut →
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SLIDE 2 -->
-
-<section
-class="slide">
-
-<div class="content">
-
-<div class="number">
-Jujur
-</div>
-
-<h2>
-Yang aku rasakan.
-</h2>
-
-<div class="text">
-
-Semakin lama aku mengenal kamu,
-
-semakin banyak hal kecil
-tentang kamu yang aku suka.
-
-<br><br>
-
-Bukan karena kamu sempurna.
-
-Tapi karena kamu adalah
-<span class="highlight">
-kamu.
-</span>
-
-</div>
-
-<button
-class="next"
-onclick="nextSlide()">
-
-Lanjut →
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SLIDE 3 -->
-
-<section
-class="slide">
-
-<div class="content">
-
-<div class="number">
-Dari hal kecil
-</div>
-
-<h2>
-Mungkin kamu tidak sadar.
-</h2>
-
-<div class="text">
-
-Cara kamu bicara.
-
-<br>
-
-Cara kamu tertawa.
-
-<br>
-
-Cara kamu menatap.
-
-<br>
-
-Bahkan hal-hal kecil yang
-mungkin menurutmu biasa saja.
-
-<br><br>
-
-Entah kenapa,
-semuanya berhasil membuatku
-ingin terus berada di dekatmu.
-
-</div>
-
-<button
-class="next"
-onclick="nextSlide()">
-
-Lanjut →
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SLIDE 4 -->
-
-<section
-class="slide">
-
-<div class="content">
-
-<div class="number">
-Sebenarnya
-</div>
-
-<h2>
-Aku sayang kamu.
-</h2>
-
-<div class="text">
-
-Tidak ada kalimat rumit
-yang perlu aku sembunyikan.
-
-<br><br>
-
-Aku sayang kamu.
-
-<br><br>
-
-Sesederhana itu.
-
-Tapi perasaan di baliknya
-tidak sesederhana kalimatnya.
-
-</div>
-
-<button
-class="next"
-onclick="nextSlide()">
-
-Lanjut →
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SLIDE 5 -->
-
-<section
-class="slide">
-
-<div class="content">
-
-<div class="number">
-Bukan tentang memiliki
-</div>
-
-<h2>
-Aku tidak ingin memaksa.
-</h2>
-
-<div class="text">
-
-Aku tidak membuat ini
-supaya kamu merasa harus
-membalas perasaanku.
-
-<br><br>
-
-Aku cuma ingin kamu tahu...
-
-ada seseorang yang benar-benar
-peduli sama kamu.
-
-<br><br>
-
-Dan orang itu adalah aku.
-
-</div>
-
-<button
-class="next"
-onclick="nextSlide()">
-
-Lanjut →
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- SLIDE 6 -->
-
-<section
-class="slide">
-
-<div class="content">
-
-<div class="number">
-Terakhir
-</div>
-
-<h2>
-Terima kasih.
-</h2>
-
-<div class="text">
-
-Terima kasih sudah hadir
-dan menjadi bagian dari
-hal-hal kecil yang membuat
-hari-hariku terasa berbeda.
-
-<br><br>
-
-Apapun yang terjadi nanti,
-
-aku akan tetap bersyukur
-pernah mengenal kamu.
-
-</div>
-
-<div class="final-heart">
-♡
-</div>
-
-
-</div>
-
-
-<!-- DOTS -->
-
-<div
-class="dots"
-id="dots">
-
-</div>
-
 
 <script>
 
+/* Membuat bintang */
+const stars = document.getElementById("stars");
 
-/* =========================
-   SLIDER SYSTEM
-========================= */
+for (let i = 0; i < 80; i++) {
 
-const slides =
-    document.querySelectorAll(".slide");
+    const star = document.createElement("div");
 
-const dotsContainer =
-    document.getElementById("dots");
+    star.className = "star";
 
-let currentSlide = 0;
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
 
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
 
-/* CREATE DOTS */
-
-slides.forEach((slide, index) => {
-
-    const dot =
-        document.createElement("div");
-
-    dot.className = "dot";
-
-    if(index === 0) {
-
-        dot.classList.add("active");
-
-    }
-
-    dot.onclick = () => {
-
-        goToSlide(index);
-
-    };
-
-    dotsContainer.appendChild(dot);
-
-});
+    stars.appendChild(star);
+}
 
 
-const dots =
-    document.querySelectorAll(".dot");
-
-
-/* CHANGE SLIDE */
-
-function goToSlide(index) {
-
-    slides[currentSlide]
-        .classList.remove("active");
-
-    dots[currentSlide]
-        .classList.remove("active");
-
-
-    currentSlide = index;
-
-
-    slides[currentSlide]
-        .classList.add("active");
-
-    dots[currentSlide]
-        .classList.add("active");
-
+/* Mulai bunga mekar */
+setTimeout(() => {
 
     document
-        .querySelector(".background")
-        .style.transform =
-        "scale(1.08)";
+        .getElementById("flower")
+        .classList.add("bloom");
 
+}, 3500);
+
+
+/* Membuat hati beterbangan */
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "♥";
+
+    heart.style.left =
+        (40 + Math.random() * 20) + "%";
+
+    heart.style.bottom =
+        (100 + Math.random() * 80) + "px";
+
+    heart.style.animationDuration =
+        (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
 
     setTimeout(() => {
-
-        document
-            .querySelector(".background")
-            .style.transform =
-            "scale(1.05)";
-
-    }, 700);
-
-
-    createHearts(
-        currentSlide === slides.length - 1
-            ? 15
-            : 3
-    );
-
+        heart.remove();
+    }, 6000);
 }
 
-
-/* NEXT */
-
-function nextSlide() {
-
-    if(
-        currentSlide <
-        slides.length - 1
-    ) {
-
-        goToSlide(
-            currentSlide + 1
-        );
-
-    }
-
-}
-
-
-/* RESTART */
-
-function restart() {
-
-    goToSlide(0);
-
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-const music =
-    document.getElementById("music");
-
-const musicButton =
-    document.getElementById(
-        "musicButton"
-    );
-
-
-function toggleMusic() {
-
-    if(music.paused) {
-
-        music.play()
-        .then(() => {
-
-            musicButton.textContent =
-                "❚❚";
-
-        })
-        .catch(() => {
-
-            alert(
-                "musike puteren"
-            );
-
-        });
-
-    }
-
-    else {
-
-        music.pause();
-
-        musicButton.textContent =
-            "♫";
-
-    }
-
-}
-
-
-/* =========================
-   HEART EFFECT
-========================= */
-
-function createHearts(amount) {
-
-    for(
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        const heart =
-            document.createElement(
-                "div"
-            );
-
-
-        heart.className =
-            "heart";
-
-
-        heart.textContent =
-            Math.random() > .3
-                ? "♡"
-                : "✦";
-
-
-        heart.style.left =
-            (
-                35 +
-                Math.random() * 30
-            ) + "vw";
-
-
-        heart.style.bottom =
-            (
-                25 +
-                Math.random() * 15
-            ) + "vh";
-
-
-        heart.style.setProperty(
-            "--x",
-            (
-                Math.random() * 160 -
-                80
-            ) + "px"
-        );
-
-
-        document.body.appendChild(
-            heart
-        );
-
-
-        setTimeout(() => {
-
-            heart.remove();
-
-        }, 3500);
-
-    }
-
-}
-
-
-/* =========================
-   KEYBOARD
-========================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key ===
-            "ArrowRight"
-        ) {
-
-            nextSlide();
-
-        }
-
-
-        if(
-            event.key ===
-            "ArrowLeft"
-        ) {
-
-            if(currentSlide > 0) {
-
-                goToSlide(
-                    currentSlide - 1
-                );
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =========================
-   SWIPE MOBILE
-========================= */
-
-let touchStartX = 0;
-
-
-document.addEventListener(
-    "touchstart",
-    event => {
-
-        touchStartX =
-            event.changedTouches[0].screenX;
-
-    }
-);
-
-
-document.addEventListener(
-    "touchend",
-    event => {
-
-        const touchEndX =
-            event.changedTouches[0].screenX;
-
-
-        const difference =
-            touchStartX -
-            touchEndX;
-
-
-        if(
-            Math.abs(difference) >
-            60
-        ) {
-
-            if(difference > 0) {
-
-                nextSlide();
-
-            }
-
-            else if(currentSlide > 0) {
-
-                goToSlide(
-                    currentSlide - 1
-                );
-
-            }
-
-        }
-
-    }
-);
+setInterval(createHeart, 700);
 
 </script>
 
 </body>
-
 </html>
