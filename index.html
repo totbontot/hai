@@ -2,8 +2,11 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0, user-scalable=no">
+
+<title>For You 🌷</title>
 
 <style>
 * {
@@ -12,19 +15,34 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
-    background: radial-gradient(circle at center, #18233b 0%, #090d18 70%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
 }
 
-/* Bintang */
-.stars {
+body {
+    background:
+        linear-gradient(
+            to bottom,
+            #101827 0%,
+            #18263b 45%,
+            #304a4d 72%,
+            #101b16 100%
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    font-family: Georgia, serif;
+}
+
+/* =========================
+   LANGIT
+========================= */
+
+.sky {
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -34,251 +52,604 @@ body {
     position: absolute;
     width: 2px;
     height: 2px;
-    background: white;
+    background: rgba(255,255,255,.8);
     border-radius: 50%;
-    opacity: 0.7;
-    animation: twinkle 2s infinite alternate;
+    animation: blink 3s infinite alternate;
 }
 
-@keyframes twinkle {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
+@keyframes blink {
+    from {
+        opacity: .15;
+    }
+
+    to {
+        opacity: .9;
+    }
 }
 
-/* Area bunga */
-.scene {
-    position: relative;
-    width: 350px;
-    height: 500px;
+/* =========================
+   BULAN
+========================= */
+
+.moon {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+
+    background: #fff4cf;
+
+    top: 9%;
+    right: 12%;
+
+    box-shadow:
+        0 0 30px rgba(255,240,190,.35);
 }
 
-/* Tanah */
+/* =========================
+   TANAH
+========================= */
+
 .ground {
     position: absolute;
-    bottom: 55px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 12px;
-    background: #182818;
-    border-radius: 50%;
-    filter: blur(2px);
+    bottom: 0;
+    width: 100%;
+    height: 19%;
+
+    background:
+        linear-gradient(
+            to top,
+            #08100b,
+            #142319
+        );
 }
 
-/* Batang */
+/* =========================
+   BUNGA
+========================= */
+
+.flower {
+    position: absolute;
+
+    bottom: 17%;
+    left: 50%;
+
+    width: 260px;
+    height: 470px;
+
+    transform: translateX(-50%);
+}
+
+/* =========================
+   BATANG
+========================= */
+
 .stem {
     position: absolute;
+
+    bottom: 0;
+    left: 50%;
+
     width: 7px;
     height: 0;
-    background: linear-gradient(to right, #245b32, #4e9b52, #245b32);
-    left: 50%;
-    bottom: 60px;
-    transform: translateX(-50%);
-    border-radius: 10px;
-    animation: growStem 4s ease-out forwards;
+
+    background:
+        linear-gradient(
+            to right,
+            #183d25,
+            #4d8b48,
+            #214b29
+        );
+
+    border-radius: 100px;
+
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(-2deg);
+
+    animation:
+        stemGrow 4s ease-out forwards;
 }
 
-@keyframes growStem {
+@keyframes stemGrow {
+
     0% {
         height: 0;
     }
 
     100% {
-        height: 250px;
+        height: 330px;
     }
 }
 
-/* Daun */
+/* =========================
+   DAUN
+========================= */
+
 .leaf {
     position: absolute;
-    width: 0;
-    height: 0;
-    background: #3f8d47;
-    border-radius: 100% 0 100% 0;
+
+    width: 75px;
+    height: 34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #315f34,
+            #579452
+        );
+
     opacity: 0;
+
+    transform-origin: right center;
+
+    border-radius: 100% 0 100% 0;
 }
 
 .leaf.left {
-    left: 50%;
-    bottom: 150px;
-    transform-origin: right bottom;
-    animation: leafLeft 2s ease-out 2s forwards;
+    left: 91px;
+    bottom: 125px;
+
+    transform:
+        rotate(-30deg)
+        scale(0);
+
+    animation:
+        leafAppear 1.5s ease-out 2.4s forwards,
+        leafWind 4s ease-in-out 5s infinite;
 }
 
 .leaf.right {
-    left: 50%;
-    bottom: 190px;
-    transform-origin: left bottom;
+    left: 100px;
+    bottom: 180px;
+
+    transform-origin: left center;
+
     border-radius: 0 100% 0 100%;
-    animation: leafRight 2s ease-out 2.5s forwards;
+
+    transform:
+        rotate(28deg)
+        scale(0);
+
+    animation:
+        leafAppearRight 1.5s ease-out 2.8s forwards,
+        leafWindRight 4s ease-in-out 5s infinite;
 }
 
-@keyframes leafLeft {
+@keyframes leafAppear {
+
     0% {
-        width: 0;
-        height: 0;
         opacity: 0;
-        transform: rotate(0deg);
+        transform:
+            rotate(-30deg)
+            scale(0);
     }
 
     100% {
-        width: 65px;
-        height: 30px;
         opacity: 1;
-        transform: translateX(-60px) rotate(-25deg);
+        transform:
+            rotate(-30deg)
+            scale(1);
     }
 }
 
-@keyframes leafRight {
+@keyframes leafAppearRight {
+
     0% {
-        width: 0;
-        height: 0;
         opacity: 0;
-        transform: rotate(0deg);
+        transform:
+            rotate(28deg)
+            scale(0);
     }
 
     100% {
-        width: 65px;
-        height: 30px;
         opacity: 1;
-        transform: translateX(0) rotate(25deg);
+        transform:
+            rotate(28deg)
+            scale(1);
     }
 }
 
-/* Kepala bunga */
-.flower {
+@keyframes leafWind {
+
+    0%,100% {
+        transform: rotate(-30deg);
+    }
+
+    50% {
+        transform: rotate(-24deg);
+    }
+}
+
+@keyframes leafWindRight {
+
+    0%,100% {
+        transform: rotate(28deg);
+    }
+
+    50% {
+        transform: rotate(34deg);
+    }
+}
+
+/* =========================
+   KEPALA BUNGA
+========================= */
+
+.flower-head {
+
     position: absolute;
+
     left: 50%;
-    bottom: 300px;
-    width: 20px;
-    height: 20px;
-    transform: translateX(-50%);
+    bottom: 325px;
+
+    width: 32px;
+    height: 38px;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    transform-origin: bottom center;
+
+    animation:
+        budGrow 3s ease-in-out 3.5s forwards,
+        flowerSway 5s ease-in-out 7s infinite;
 }
 
-/* Kelopak */
+@keyframes budGrow {
+
+    0% {
+        width: 22px;
+        height: 28px;
+    }
+
+    100% {
+        width: 190px;
+        height: 180px;
+    }
+}
+
+@keyframes flowerSway {
+
+    0%,100% {
+        transform:
+            translateX(-50%)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            rotate(3deg);
+    }
+}
+
+/* =========================
+   KELopak
+========================= */
+
 .petal {
+
     position: absolute;
-    width: 0;
-    height: 0;
+
     left: 50%;
     top: 50%;
-    background: linear-gradient(135deg, #ff719d, #d92869);
-    border-radius: 100% 0 100% 0;
-    transform-origin: bottom right;
+
+    width: 0;
+    height: 0;
+
     opacity: 0;
-    box-shadow: 0 0 15px rgba(255, 70, 130, 0.4);
+
+    background:
+        radial-gradient(
+            ellipse at 40% 30%,
+            #ffb1c6 0%,
+            #f56f9a 45%,
+            #c92d61 100%
+        );
+
+    border-radius:
+        75% 25% 70% 30% /
+        70% 35% 65% 30%;
+
+    transform-origin: 50% 90%;
 }
 
-/* 8 kelopak */
-.petal:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg); }
-.petal:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg); }
-.petal:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg); }
-.petal:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg); }
-.petal:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg); }
-.petal:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg); }
-.petal:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg); }
-.petal:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg); }
+/* posisi natural, tidak identik sempurna */
 
-.flower.bloom .petal {
-    animation: bloom 3s cubic-bezier(.2,.8,.2,1) forwards;
+.p1 {
+    transform:
+        translate(-50%, -90%)
+        rotate(-12deg);
+    animation: petal1 2.5s ease-out 5.4s forwards;
 }
 
-@keyframes bloom {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
+.p2 {
+    transform:
+        translate(-50%, -90%)
+        rotate(32deg);
+    animation: petal2 2.5s ease-out 5.8s forwards;
+}
 
-    60% {
+.p3 {
+    transform:
+        translate(-50%, -90%)
+        rotate(76deg);
+    animation: petal3 2.5s ease-out 6.1s forwards;
+}
+
+.p4 {
+    transform:
+        translate(-50%, -90%)
+        rotate(122deg);
+    animation: petal4 2.5s ease-out 6.4s forwards;
+}
+
+.p5 {
+    transform:
+        translate(-50%, -90%)
+        rotate(166deg);
+    animation: petal5 2.5s ease-out 6.7s forwards;
+}
+
+.p6 {
+    transform:
+        translate(-50%, -90%)
+        rotate(211deg);
+    animation: petal6 2.5s ease-out 7s forwards;
+}
+
+.p7 {
+    transform:
+        translate(-50%, -90%)
+        rotate(255deg);
+    animation: petal7 2.5s ease-out 7.3s forwards;
+}
+
+.p8 {
+    transform:
+        translate(-50%, -90%)
+        rotate(302deg);
+    animation: petal8 2.5s ease-out 7.6s forwards;
+}
+
+/* variasikan ukuran tiap kelopak */
+
+@keyframes petal1 {
+    to {
+        width: 72px;
+        height: 105px;
         opacity: 1;
     }
+}
 
-    100% {
-        width: 95px;
-        height: 135px;
+@keyframes petal2 {
+    to {
+        width: 76px;
+        height: 112px;
         opacity: 1;
     }
 }
 
-/* Putik */
+@keyframes petal3 {
+    to {
+        width: 69px;
+        height: 102px;
+        opacity: 1;
+    }
+}
+
+@keyframes petal4 {
+    to {
+        width: 74px;
+        height: 108px;
+        opacity: 1;
+    }
+}
+
+@keyframes petal5 {
+    to {
+        width: 70px;
+        height: 100px;
+        opacity: 1;
+    }
+}
+
+@keyframes petal6 {
+    to {
+        width: 78px;
+        height: 110px;
+        opacity: 1;
+    }
+}
+
+@keyframes petal7 {
+    to {
+        width: 71px;
+        height: 106px;
+        opacity: 1;
+    }
+}
+
+@keyframes petal8 {
+    to {
+        width: 75px;
+        height: 105px;
+        opacity: 1;
+    }
+}
+
+/* =========================
+   PUTIK
+========================= */
+
 .center {
+
     position: absolute;
-    width: 0;
-    height: 0;
+
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+
+    width: 0;
+    height: 0;
+
+    transform:
+        translate(-50%, -50%);
+
     border-radius: 50%;
-    background: radial-gradient(circle, #ffe88a, #f5a623);
-    box-shadow: 0 0 0 rgba(255, 210, 70, 0);
+
+    background:
+        radial-gradient(
+            circle,
+            #ffeaa1 0%,
+            #f4bd45 50%,
+            #b87322 100%
+        );
+
     z-index: 10;
-    animation: centerGrow 3s ease-out 3s forwards;
+
+    animation:
+        centerAppear
+        2s ease-out 8.2s forwards;
 }
 
-@keyframes centerGrow {
+@keyframes centerAppear {
+
     0% {
         width: 0;
         height: 0;
     }
 
     100% {
-        width: 45px;
-        height: 45px;
-        box-shadow: 0 0 25px rgba(255, 200, 70, .7);
+        width: 42px;
+        height: 42px;
+        box-shadow:
+            0 0 20px
+            rgba(255,210,90,.45);
     }
 }
 
-/* Tulisan */
+/* =========================
+   PESAN
+========================= */
+
 .message {
+
     position: absolute;
+
+    left: 0;
+    bottom: 5%;
+
     width: 100%;
+
     text-align: center;
-    bottom: 5px;
+
     color: white;
-    font-size: 0;
-    letter-spacing: 5px;
+
+    font-size: 30px;
+
+    letter-spacing: 4px;
+
     opacity: 0;
-    text-shadow: 0 0 15px rgba(255, 100, 160, .8);
-    animation: showText 2s ease-out 6s forwards;
+
+    text-shadow:
+        0 0 15px rgba(255,120,160,.8);
+
+    animation:
+        messageAppear
+        2.5s ease-out 9.5s forwards;
 }
 
-@keyframes showText {
+@keyframes messageAppear {
+
     0% {
         opacity: 0;
-        font-size: 0;
-        transform: translateY(20px);
+        transform:
+            translateY(20px)
+            scale(.8);
     }
 
     100% {
         opacity: 1;
-        font-size: 36px;
-        transform: translateY(0);
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
-/* Partikel cinta */
+/* =========================
+   HATI
+========================= */
+
 .heart {
+
     position: absolute;
-    color: #ff6f9f;
-    font-size: 15px;
+
+    color: #ff7da6;
+
+    font-size: 14px;
+
     opacity: 0;
-    animation: floatHeart 5s linear infinite;
+
+    pointer-events: none;
+
+    animation:
+        heartFloat
+        5s linear forwards;
 }
 
-@keyframes floatHeart {
+@keyframes heartFloat {
+
     0% {
-        transform: translateY(0) scale(.5);
+        transform:
+            translateY(0)
+            scale(.5);
+
         opacity: 0;
     }
 
     20% {
-        opacity: .8;
+        opacity: .7;
     }
 
     100% {
-        transform: translateY(-180px) scale(1.2);
+        transform:
+            translateY(-180px)
+            scale(1.1);
+
         opacity: 0;
+    }
+}
+
+/* =========================
+   HP KECIL
+========================= */
+
+@media (max-height: 650px) {
+
+    .flower {
+        transform:
+            translateX(-50%)
+            scale(.8);
+
+        transform-origin:
+            bottom center;
+    }
+
+    .message {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .flower {
+        transform:
+            translateX(-50%)
+            scale(.85);
+
+        transform-origin:
+            bottom center;
     }
 }
 </style>
@@ -286,94 +657,107 @@ body {
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div class="sky" id="sky"></div>
 
-<div class="scene">
+<div class="moon"></div>
 
-    <div class="ground"></div>
+<div class="ground"></div>
+
+<div class="flower">
 
     <div class="stem"></div>
 
     <div class="leaf left"></div>
     <div class="leaf right"></div>
 
-    <div class="flower" id="flower">
+    <div class="flower-head">
 
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
+        <div class="petal p6"></div>
+        <div class="petal p7"></div>
+        <div class="petal p8"></div>
 
         <div class="center"></div>
 
     </div>
 
-    <div class="message">
-        I Love You ❤️
-    </div>
-
 </div>
+
+<div class="message">
+    I Love You ❤️
+</div>
+
 
 <script>
 
-/* Membuat bintang */
-const stars = document.getElementById("stars");
+/* =========================
+   BINTANG
+========================= */
 
-for (let i = 0; i < 80; i++) {
+const sky =
+    document.getElementById("sky");
 
-    const star = document.createElement("div");
+for (let i = 0; i < 70; i++) {
+
+    const star =
+        document.createElement("div");
 
     star.className = "star";
 
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 75 + "%";
 
     star.style.animationDelay =
-        Math.random() * 2 + "s";
+        Math.random() * 3 + "s";
 
-    stars.appendChild(star);
+    sky.appendChild(star);
 }
 
 
-/* Mulai bunga mekar */
-setTimeout(() => {
+/* =========================
+   HATI TERBANG
+========================= */
 
-    document
-        .getElementById("flower")
-        .classList.add("bloom");
-
-}, 3500);
-
-
-/* Membuat hati beterbangan */
 function createHeart() {
 
-    const heart = document.createElement("div");
+    const heart =
+        document.createElement("div");
 
     heart.className = "heart";
+
     heart.innerHTML = "♥";
 
     heart.style.left =
-        (40 + Math.random() * 20) + "%";
+        (42 + Math.random() * 16) + "%";
 
     heart.style.bottom =
-        (100 + Math.random() * 80) + "px";
+        (18 + Math.random() * 15) + "%";
 
     heart.style.animationDuration =
-        (3 + Math.random() * 3) + "s";
+        (4 + Math.random() * 3) + "s";
 
     document.body.appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 6000);
+    }, 7000);
 }
 
-setInterval(createHeart, 700);
+
+/* hati baru muncul setelah bunga mekar */
+
+setTimeout(() => {
+
+    setInterval(createHeart, 1000);
+
+}, 9000);
 
 </script>
 
